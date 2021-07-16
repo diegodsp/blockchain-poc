@@ -17,19 +17,47 @@ namespace Blockchain
                 "Teste 5"
             };
 
-            // listagem
+            // lista
             Console.WriteLine("Lista blocos...");
             foreach (var b in blockchain)
                 Console.WriteLine(b);
 
             // verifica blocos individualmente
+            VerificaIndividualmente(blockchain);
+
+            // verifica sequência
+            VerificaSequencia(blockchain);
+
+            // remove um item
+            RemoveUmItem(blockchain);
+
+            // verifica individualmente
+            VerificaIndividualmente(blockchain);
+
+            // verifica sequência
+            VerificaSequencia(blockchain);
+
+            // altera um item
+            AlteraUmItem(blockchain);
+
+            // verifica individualmente
+            VerificaIndividualmente(blockchain);
+
+            // verifica sequência
+            VerificaSequencia(blockchain);
+        }
+
+        static void VerificaIndividualmente(Sequence blockchain)
+        {
             Console.WriteLine("Verifica blocos individualmente...");
             for (int i = 0; i < blockchain.Count; i++)
                 Console.WriteLine($"Bloco #{i} = {(Block.Validate(blockchain[i]) ? "válido" : "inválido")}");
+        }
 
+        static void VerificaSequencia(Sequence blockchain)
+        {
             try
             {
-                // verifica sequência
                 Console.Write("Verifica sequência: ");
                 blockchain.Validate();
                 Console.WriteLine("válida!");
@@ -38,7 +66,10 @@ namespace Blockchain
             {
                 Console.WriteLine($"inválida! Erro: {ex.Message}");
             }
+        }
 
+        static void RemoveUmItem(in Sequence blockchain)
+        {
             // remove um item
             Console.WriteLine("Remove um item da sequência...");
             // remove um aleatório
@@ -47,18 +78,12 @@ namespace Blockchain
             // blockchain.RemoveAt(0); // problema, pois a sequência continua válida
             // remove um do meio
             blockchain.RemoveAt(2);  // funciona, pois perde-se a sequência de chaves
+        }
 
-            try
-            {
-                // verifica sequência
-                Console.Write("Verifica sequência: ");
-                blockchain.Validate();
-                Console.WriteLine("válida!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"inválida! Erro: {ex.Message}");
-            }
+        static void AlteraUmItem(Sequence blockchain)
+        {
+            Console.WriteLine("Altera um item da sequência...");
+            blockchain[3].Content = "Teste alterado";
         }
     }
 }
