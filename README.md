@@ -13,3 +13,8 @@ Basicamente criar um bloco inicial, chamado de gênesis, e a partir dele criar o
 ## Resultado dos primeiros testes
 ![image](https://user-images.githubusercontent.com/15212240/125945836-582565dd-aaea-4379-a82e-ae8bf15d91de.png)
 
+|Teste|Resultado|
+|---|---|
+|Remover um item do início|ok|
+|Remover um item do meio|falha|
+|Alterar um item|falha|
